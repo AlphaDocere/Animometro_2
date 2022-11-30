@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-">
+
+  <title>Firebase test Alpha Docere CRUD</title>
+  <link rel="stylesheet" href="./index.css">
+
+  <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css">
+
+
+
+  <script type="text/javascript">
+    function myFunction(id) {
+      /* Get the text field */
+
+      var copyText = document.getElementById("myInput_"+id);
+   
+      console.log(copyText)
+     
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+       /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+    
+      /* Alert the copied text */
+    /*  alert("Animometro Copiado Correctamente: " + copyText.value);*/
+    }
+    
+    
+    </script>
+
+</head>
+<body class="bg-dark">
+  <div class="container p-4">
+    <div class="row">
+      <div class="container p-6">
+        <div class="card">
+        
+
+          <div class="card-body">
+            <h1 class="h4"> Generador de Animometros </h1>
+          
+            <form id="task-form">
+
+              <label for="task-title" > Titulo</label>
+              <input class="form-control mb-3" type="text" placeholder="Titulo de la tarea" id="task-title" name="task-title">
+              
+              <label for="description" id="task-description"> Descripción</label>
+              <textarea
+              class="form-control mb-3"
+               id="task-description"
+                name="task-description"
+                type="text" 
+                rows="3"
+                placeholder="descripción de la tarea" ></textarea>
+              
+              <button class="btn btn-primary" type="submit" id="btn-task-save" > Guardar</button>
+            
+            
+              </form>
+
+          </div>
+          <div id="alert-success" style="visibility: hidden" class="alert alert-dismissible alert-success">
+                
+            <strong>Bien Hecho!</strong>
+            <p id="alert-mensaje"> Has Creado una nueva tarea.</p>
+           
+          </div>
+        </div>
+    
+      </div>
+   
+ 
+
+   
+      
+    </div>
+    
+    <div class="col-md-12" id="task-container"> </div>
+  </div>
+
+<!-- Documento HTML5 -->
+
+
+
+
+
+
+
+<script type="module" src="./index.js"></script>
+<script type="module" src="./firebase.js"></script>
+
+    
+</body>
+
+</html>

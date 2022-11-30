@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-">
+
+  <title>Firebase test Alpha Docere CRUD</title>
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css">
+  <link rel="stylesheet" href="./cards.css">
+
+
+</head>
+
+
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark" id="NavBar" style="display:none">
+    <div class="container">
+      <a class="navbar-brand" href="#">Animometro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active logged-out" aria-current="page" href="#" data-bs-toggle="modal"
+              data-bs-target="#ingresarModal">Ingresar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link logged-out" href="#" data-bs-toggle="modal" data-bs-target="#registroModal">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link logged-in" href="#" id="logout">Desloguear</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal de Logueo  -->
+
+  <div class="modal fade modal-text" id="ingresarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">INGRESO</h1>
+          <button type="button" class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="login-form">
+
+            <label for="email">Email:</label>
+            <input type="email" id="login-email" class="form-control mb-3" placeholder="Email" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="login-password" class="form-control mb-3" placeholder="contrasena" required>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Modal de registro  -->
+  <div class="modal fade modal-text" id="registroModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTRO</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="registro-form">
+
+            <label for="email">Email:</label>
+            <input type="email" id="registroEmail" class="form-control mb-3" placeholder="Email" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="registroPassword" class="form-control mb-3" placeholder="contrasena" required>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container p-12">
+
+
+    <div class="row">
+
+
+
+
+      <div class="container p-6">
+
+
+
+        <div class="card">
+
+          <h1 class="h4" id="titulo-animometro"> </h1>
+
+
+          <form id="form_bienvenida">
+            <h1 class="h3 mb-3 fw-normal"> Zona de Identificación</h1>
+            <p> Este juego esta pensado para que puedas
+              jugarlo identificandote o de forma anonima.</p>
+            <p>Con tu e-mail te enviaremos historial e información
+              sobre actividades socioemocionales. </p>
+
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingUsername">
+              <label for="floatingUsername">¿Cómo deseas que te llamemos?</label>
+            </div>
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingEmail">
+              <label for="floatingEmail">Cuentanos tu correo para generar un historial de tus animos</label>
+            </div>
+
+
+            <div class="checkbox mb-3">
+              <label>
+                <input id="chAnonimo" type="checkbox" value="remember-me"> Prefiero ingresar de forma anonima
+              </label>
+            </div>
+
+
+
+            <button class="w-100 btn btn-lg btn-primary" type="button" id="btn-identify">Comenzar</button>
+            <div id="alert-danger" style="visibility: hidden" class="alert alert-dismissible alert-danger">
+
+            </div>
+            <p class="mt-5 mb-3 text-muted">2022 Alpha Docere , Siente , Piensa y Expresa tus emociones.</p>
+
+
+            <img class="mb-4" src="games/JXmbTRhgHRLxVcLeI2wF/img/aviso_index.png" alt="" width="500" height="500">
+
+
+          </form>
+
+
+          <div id="contenedor_animometro" class="card-body" style="display:none">
+
+            </p>
+
+
+
+            <div class="container">
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back-yellow.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back-red.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back.jpg')">
+                <div class="cards__inner"></div>
+
+              </div>
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back-red.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+
+
+
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+              <div class="cards" style="background-image: url('games/JXmbTRhgHRLxVcLeI2wF/img/back-yellow.jpg')">
+                <div class="cards__inner"></div>
+              </div>
+
+            </div>
+
+
+            <div class="container">
+              <form id="SeleccionarCarta">
+
+                <button class="btn btn-primary" type="button" id="btn-change-card"> Cambiar Carta</button>
+
+
+                <div class="card" style="width: 18rem;">
+
+                  <div class="card-body">
+                    <p class="card-text" for="InformaciondelaCarta" id="info-Carta"> Información sobre la Carta</p>
+
+
+                  </div>
+
+                  <img id="carta-activa" width="100%" alt="la cartita" class="card-img-top"
+                    src="games/JXmbTRhgHRLxVcLeI2wF/img/back.jpg" />
+
+
+
+
+
+
+                </div>
+
+
+              </form>
+
+
+            </div>
+
+
+            <div id="chatContent" class="overflow-auto" style="max-height: 600px;">aqui se pondra el chat</div>
+
+            <div class="card-body">
+              <input id="message" placeholder="Mensaje al Chat" name="" autocomplete="off">
+
+              <button class="btn btn-primary" type="button" id="btnChat"> Enviar</button>
+
+
+            </div>
+
+
+            <br />
+            <label for="task-title" id="task-title"> titulo </label>
+            <br />
+            <label for="description" id="task-description"> Descripcion </label>
+            <br />
+
+            <p>
+              <button class='btn btn-primary btn-edit'
+                onclick="window.location.href='http://localhost/firebase_ejemplo/index.html'">Volver al Generador de
+                Links </button>
+
+
+
+            <form id="protector-mazo">
+
+              <br />
+
+
+
+
+
+
+
+            </form>
+
+
+            <label> Movimientos </label>
+            <label for="move" id="move-card"> 0 </label>
+          </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+    <!-- Documento HTML5 -->
+
+
+
+
+
+
+
+    <script type="module" src="./animometro.js"></script>
+    <script type="module" src="./firebase.js"></script>
+    <script src="./animate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

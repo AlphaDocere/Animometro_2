@@ -1,0 +1,48 @@
+.container {
+    max-width: 800p x;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    position: relative;
+}
+
+.cards {
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    width: 33.33%;
+    transition: all 400ms ease;
+    background-size: cover;
+    background-position: center;
+}
+
+.cards:hover:not(.active).left {
+    transform: translateX(-50%) rotate(-10deg) scale(0.9);
+}
+
+.cards:hover:not(.active).right {
+    transform: translateX(50%) rotate(10deg) scale(0.9);
+}
+
+.cards.left {
+    transform: translateX(-50%) scale(0.9);
+}
+
+.cards.right {
+    transform: translateX(50%) scale(0.9);
+}
+
+.cards.active {
+    z-index: 5;
+    position: relative;
+}
+
+.cards__inner {
+    position: relative;
+    padding-bottom: 158.8235294118%;
+}
+
+.modal-text {
+    color: aliceblue;
+}
